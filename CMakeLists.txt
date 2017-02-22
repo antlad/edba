@@ -9,8 +9,14 @@ option(EDBA_S_BACKEND_SHARED "Use backends as shared libraries for static versio
 option(EDBA_ENABLE "Enable shared versions of core libraries" ON)
 option(EDBA_S_ENABLE "Enable static version of core libraries" ON)
 
+option(EDBA_ENABLE_POSITION_INDEPENDENT_CODE "Enable position independent code" ON)
+
 # Use own helpers
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+
+if (EDBA_ENABLE_POSITION_INDEPENDENT_CODE)
+    set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+endif()
 
 # Figure out if we are included from another cmake
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
